@@ -6,11 +6,28 @@ let score = JSON.parse(localStorage.getItem('score'))||{
 
 const scores = document.querySelector('.scores')
 const result = document.querySelector('.results')
-document.querySelector('.moves').innerHTML = `You
-        <img src="images/${playermove}-emoji.png" class="move-icon">
-        <img src="images/${computermove}-emoji.png" class="move-icon">
-        Computer`
+
+
 scores.innerHTML =`Wins:${score.Wins}, Loses:${score.Loses}, Ties:${score.Ties}`
+
+let isAutoplaying = false;
+let intervalId ;
+
+function autoPlay() {
+    const buttonText = document.querySelector('.autoplay-button');
+    if (!isAutoplaying) {
+        buttonText.innerHTML = 'Stop';
+        intervalId = setInterval(function () {
+            const playerMove = computerMove();
+            playGame(playerMove);
+        }, 1000);
+        isAutoplaying = true;
+    } else {
+        clearInterval(intervalId);
+        buttonText.innerHTML = 'Auto Play';
+        isAutoplaying = false;
+    }
+}
 function playGame(playermove){
     const computermove = computerMove()
     
