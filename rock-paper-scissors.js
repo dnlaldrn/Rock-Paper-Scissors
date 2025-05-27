@@ -51,7 +51,7 @@ document.body.addEventListener('keydown', (event) =>{
 });
 
 
-function playGame(playermove){
+function playGame(){
     const computermove = computerMove()
     
     document.querySelector('.moves').innerHTML = `You
