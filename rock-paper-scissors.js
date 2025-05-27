@@ -52,33 +52,31 @@ document.body.addEventListener('keydown', (event) =>{
 
 
 function playGame(playermove){
-    const computermove = computerMove()
-    
+    const computermove = computerMove();
     document.querySelector('.moves').innerHTML = `You
         <img src="images/${playermove}-emoji.png" class="move-icon">
         <img src="images/${computermove}-emoji.png" class="move-icon">
-        Computer`
-    if(playermove == computermove){
+        Computer`;
+
+    if(playermove === computermove){
         score.Ties += 1;
-        result.innerHTML = 'Tie.'
-        scores.innerHTML = `Wins:${score.Wins}, Loses:${score.Loses}, Ties:${score.Ties}`
-
-    }
-    else if ((playermove == 'Rock' && computermove == 'Scissors')||
-        (playermove == 'Scissors' && computermove == 'Paper')||
-        (playermove == 'Paper' && computermove == 'Rock')){
+        result.innerHTML = 'Tie.';
+    } else if (
+        (playermove === 'Rock' && computermove === 'Scissors') ||
+        (playermove === 'Scissors' && computermove === 'Paper') ||
+        (playermove === 'Paper' && computermove === 'Rock')
+    ){
         score.Wins += 1;
-        result.innerHTML = 'You Win.'
-        scores.innerHTML = `Wins:${score.Wins}, Loses:${score.Loses}, Ties:${score.Ties}`
-    }else{
+        result.innerHTML = 'You Win.';
+    } else {
         score.Loses += 1;
-        result.innerHTML = 'You Lose.'
-
-
-        scores.innerHTML =`Wins:${score.Wins}, Loses:${score.Loses}, Ties:${score.Ties}`
+        result.innerHTML = 'You Lose.';
     }
-localStorage.setItem('score', JSON.stringify(score));
+
+    scores.innerHTML = `Wins:${score.Wins}, Loses:${score.Loses}, Ties:${score.Ties}`;
+    localStorage.setItem('score', JSON.stringify(score));
 }
+
 function computerMove(){
     
     const randomNumber = Math.random()
