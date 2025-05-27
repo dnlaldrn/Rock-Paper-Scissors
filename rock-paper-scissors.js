@@ -30,23 +30,23 @@ function autoPlay() {
     }
 }
 document.querySelector('.js-rock-button').addEventListener('click',() =>{
-    playGame('rock');
+    playGame('Rock');
 })
 document.querySelector('.js-paper-button').addEventListener('click',() =>{
-    playGame('paper');
+    playGame('Paper');
 })
 document.querySelector('.js-scissor-button').addEventListener('click',() =>{
-    playGame('scissors');
+    playGame('Scissors');
 })
 document.body.addEventListener('keydown', (event) =>{
    if(event.key == 'r'){
-    playGame('rock')
+    playGame('Rock')
    } 
    else if(event.key == 'p'){
-    playGame('paper')
+    playGame('Paper')
    }
    else  if(event.key == 's'){
-    playGame('scissors')
+    playGame('Scissors')
    }
 });
 
